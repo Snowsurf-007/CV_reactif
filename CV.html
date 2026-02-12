@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>CV - Lucien Leheudre</title>
+
+<style>
+
+@page { size: A4; margin: 0; }
+
+body {
+    margin: 0;
+    background: #e5e5e5;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.page {
+    width: 210mm;
+    height: 297mm;
+    margin: auto;
+    background: white;
+    display: grid;
+    grid-template-columns: 70mm 140mm;
+    box-sizing: border-box;
+}
+
+/* COLONNE GAUCHE */
+
+.left {
+    background: #275879;
+    color: white;
+    padding: 50px 35px;
+    box-sizing: border-box;
+}
+
+/* Photo de profil */
+.photo-container {
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.left h2 {
+    font-size: 20px;
+    border-bottom: 1px solid white;
+    padding-bottom: 3px;
+    margin-top: 14px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+
+.left p {
+    font-size: 12px;
+    margin: 4px 0;
+}
+
+.left a {
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+.left a:hover {
+    color: #275879;
+    background: white;
+    border-bottom: 1px solid #60a5fa;
+}
+
+
+/* Compétences interactives */
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 6px;
+}
+
+.skill {
+    padding: 3px 8px;
+    border-radius: 15px;
+    font-size: 10px;
+    background: rgba(255,255,255,0.15);
+    transition: all 0.3s ease;
+}
+
+.skill.active {
+    background: #3b82f6;
+    box-shadow: 0 0 8px #3b82f6;
+    transform: scale(1.1);
+}
+
+/* Langues avec barres de progression */
+.language-item {
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.language-item:hover {
+    transform: translateX(3px);
+}
+
+.language-item p {
+    margin-bottom: 4px;
+    font-size: 12px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 5px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #3b82f6, #60a5fa);
+    border-radius: 8px;
+    transition: width 0.8s ease-out;
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.5);
+}
+
+.language-item:hover .progress-fill {
+    width: calc(var(--level) * 1%) !important;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 8px rgba(59, 130, 246, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(59, 130, 246, 0.8);
+    }
+}
+
+/* COLONNE DROITE */
+
+.right {
+    padding: 50px 40px;
+    box-sizing: border-box;
+}
+
+/* Titre principal dans la colonne droite */
+.main-title {
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.main-title h1 {
+    font-size: 32px;
+    color: #275879;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.main-title p {
+    font-size: 16px;
+    color: #0f172a;
+    margin: 3px 0 0 0;
+    font-weight: 400;
+}
+
+.right h2 {
+    font-size: 16px;
+    border-bottom: 2px solid #0f172a;
+    padding-bottom: 3px;
+    margin-top: 14px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+/* CARTES */
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.card {
+    padding: 11px;
+    border-radius: 8px;
+    background: linear-gradient(145deg, #ffffff, #f3f4f6);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid #e5e7eb;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.card-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: #275879;
+}
+
+.card-date {
+    font-size: 10px;
+    color: #6b7280;
+    margin-bottom: 5px;
+}
+
+.card-desc {
+    font-size: 11px;
+    color: #374151;
+    line-height: 1.4;
+}
+
+/* POPUP */
+
+.popup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: white;
+    width: 65%;
+    max-width: 800px;
+    max-height: 85vh;
+    padding: 35px;
+    border-radius: 12px;
+    animation: fadeIn 0.25s ease;
+    overflow-y: auto;
+    position: relative;
+}
+
+.popup-content h3 {
+    color: #275879;
+    font-size: 20px;
+    margin-bottom: 10px;
+    border-bottom: 3px solid #275879;
+    padding-bottom: 8px;
+    padding-right: 50px;
+}
+
+.popup-content p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #374151;
+    margin: 8px 0;
+}
+
+.popup-content strong {
+    color: #0f172a;
+    font-weight: 600;
+}
+
+.popup-content ul {
+    margin: 10px 0 15px 20px;
+    padding: 0;
+}
+
+.popup-content li {
+    font-size: 13px;
+    line-height: 1.7;
+    color: #374151;
+    margin: 6px 0;
+}
+
+.popup-content hr {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin: 15px 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+    color: #6b7280;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #d1d5db;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.close:hover {
+    color: white;
+    background: #275879;
+    border-color: #275879;
+    transform: rotate(90deg);
+}
+
+@media print {
+    .popup { display: none !important; }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<!-- GAUCHE -->
+
+<div class="left">
+
+<div class="photo-container">
+    <img src="C:\Users\lucie\Pictures\Photo Profil/Photo-pro.jpg" alt="Photo de Lucien Leheudre" class="profile-photo">
+</div>
+
+<h2>Coordonnées</h2>
+
+<p><img src="https://cdn-icons-png.flaticon.com/512/2099/2099140.png" alt="Téléphone" style="width:16px; vertical-align:middle; margin-right:6px;"> 06 17 91 91 04</p>
+<p><img src="https://cdn-icons-png.flaticon.com/512/115/115757.png" alt="Email" style="width:16px; vertical-align:middle; margin-right:6px;"> lucien.leheudre@gmail.com</p>
+<p><img src="https://cdn-icons-png.flaticon.com/512/5758/5758454.png" alt="Localisation" style="width:16px; vertical-align:middle; margin-right:6px;"> 95000 Cergy</p>
+<p><img src="https://cdn-icons-png.flaticon.com/512/4138/4138130.png" alt="LinkedIn" style="width:16px; vertical-align:middle; margin-right:6px;"><u><a href="https://linkedin.com/in/lucien-leheudre" target="_blank">LinkedIn</a></u></p>
+<p><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="Github" style="width:16px; vertical-align:middle; margin-right:6px;"><u><a href="https://github.com/Snowsurf-007" target="_blank">Github</a></u></p>
+
+<br>
+<h2>Compétences</h2>
+<div class="skills">
+    <div class="skill" id="C">Langage C</div>
+    <div class="skill" id="Bash">Bash</div>
+    <div class="skill" id="HTML">HTML5</div>
+    <div class="skill" id="CSS">CSS</div>
+    <div class="skill" id="PHP">PHP</div>
+    <div class="skill" id="JS">JavaScript</div>
+</div>
+
+<br>
+<h2>Langues</h2>
+<div class="language-item">
+    <p>Français (Langue maternelle)</p>
+    <div class="progress-bar">
+        <div class="progress-fill" data-level="100"></div>
+    </div>
+</div>
+<div class="language-item">
+    <p>Anglais (C1)</p>
+    <div class="progress-bar">
+        <div class="progress-fill" data-level="90"></div>
+    </div>
+</div>
+<div class="language-item">
+    <p>Espagnol (B2)</p>
+    <div class="progress-bar">
+        <div class="progress-fill" data-level="70"></div>
+    </div>
+</div>
+
+<br>
+<h2>Centres d'intérêt</h2>
+<p> - Mathématiques</p>
+<p> - Sciences</p>
+<p> - Programmation</p>
+<p> - Escalade</p>
+<p> - Plongée sous-marine</p>
+
+</div>
+
+<!-- DROITE -->
+
+<div class="right">
+
+<div class="main-title">
+    <h1>LUCIEN LEHEUDRE</h1>
+    <p>Etudiant à CY Tech et Vice-président de CYJE</p>
+</div>
+
+<h2>Formation</h2>
+<div class="cards">
+
+<div class="card" onclick="openCard(event,'form1')" data-skills="C,Bash,HTML,CSS,PHP,JS">
+    <div class="card-title">Classe préparatoire intégrée Maths Informatique option Physique</div>
+    <div class="card-date">sept. 2024 à ce jour</div>
+    <div class="card-desc">Programme de deux ans alliant mathématiques, physique, informatique et avec projets pratiques permettant de développer des compétences solides en résolution de problèmes complexes et en gestion de projets.</div>
+</div>
+
+<div class="card" onclick="openCard(event,'form2')" data-skills="">
+    <div class="card-title">Baccalauréat général, Maths/Physique-chimie</div>
+    <div class="card-date">sept. 2021 à juil. 2024</div>
+    <div class="card-desc">Options Maths expertes et Anglais européen.</div>
+</div>
+
+</div>
+
+<h2>Expériences</h2>
+<div class="cards">
+
+<div class="card" onclick="openCard(event,'exp1')" data-skills="">
+    <div class="card-title">Vice-Président</div>
+    <div class="card-date">juil. 2025 à mars 2026</div>
+    <div class="card-desc">Supervision et coordination des pôles pour assurer l'atteinte des objectifs stratégiques de la Junior entreprise. Développement et mise en œuvre de plans d'action pour améliorer la performance globale.</div>
+</div>
+
+<div class="card" onclick="openCard(event,'exp2')" data-skills="">
+    <div class="card-title">Chargé Performance</div>
+    <div class="card-date">déc. 2024 à juil. 2025</div>
+    <div class="card-desc">Correction de documents contractuels d'étude. Mise en place et refonte de KPI et processus. Analyse de données dans un but d'amélioration continue de la structure.</div>
+</div>
+
+</div>
+
+<h2>Projets</h2>
+<div class="cards">
+
+<div class="card" onclick="openCard(event,'proj1')" data-skills="C">
+    <div class="card-title">Développement d'un Tower défense en C</div>
+    <div class="card-date">mai 2025</div>
+    <div class="card-desc">Conception et implémentation des mécaniques de défense et d'attaque et d'un système de tours avec caractéristiques évolutives. Génération aléatoire de cartes avec chemins.</div>
+</div>
+
+<div class="card" onclick="openCard(event,'proj2')" data-skills="C,Bash">
+    <div class="card-title">Projet de synthèse de données d'un système de distribution d'eau</div>
+    <div class="card-date">nov. 2025</div>
+    <div class="card-desc">Script Shell + programme C pour analyser et visualiser des données. Génération d'histogrammes et calcul des pertes d'eau. Optimisation avec des AVL et gestion de la mémoire efficace.</div>
+</div>
+
+</div>
+
+<h2>Certifications</h2>
+<div class="cards">
+
+<div class="card" onclick="openCard(event,'cert1')" data-skills="">
+    <div class="card-title">The Mantu Manager Program - Mantu</div>
+    <div class="card-date">2025</div>
+    <div class="card-desc">Élaboration de stratégies de prospection, optimisation des RDV prospects et renforcement des techniques commerciales.</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<!-- ========== POPUPS ========== -->
+
+<div id="form1" class="popup"><div class="popup-content"><div class="close" onclick="closePopup()">✕</div><h3>CY Tech - Classe préparatoire intégrée</h3><p><strong>Période :</strong> Janvier 2024 - Juillet 2026</p><p><strong>Localisation :</strong> CY Tech, Cergy</p><hr><p><strong>1ère année :</strong></p><ul><li>Mathématiques (Algèbre (linéaire et non linéaire) et Analyse)</li><li>Physique (Analyse dimensionnelle, Optique et lumière, Mécanique et dynamique du point)</li><li>Informatique (Programmation en C et bases des alghorithmes)</li><li>Humanité design : Communication & expression, Interaction & coopération, Méthode projet design</li><li>Anglais</li><li>Projets en Informatique et en Humanité design</li></ul><p><strong>2ème année :</strong></p><ul><li>Mathématiques (Séries, Analyse dans ℝⁿ, Algèbre bilinéaire, Probabilités et Intégration)</li><li>Électromagnétisme, physique des ondes et Mécanique quantique</li><li>Informatique (Programmation en C, Script Shell, HTML5, CSS, Java Script, PHP et DOM)</li><li>Humanité design : Sciences humaines et sociales, Communication & expression, Interaction & coopération et Éthique</li><li>Anglais</li><li>Projets en Informatique, en physique et en Humanité design</li></ul></div></div>
+
+<div id="form2" class="popup"><div class="popup-content"><div class="close" onclick="closePopup()">✕</div><h3>Lycée Jean Perrin - Baccalauréat général, Maths/Physique-chimie</h3><p><strong>Période :</strong> Septembre 2021 - Juillet 2024</p><p><strong>Établissement :</strong> Lycée Jean Perrin, Saint-Ouen-l'Aumône</p><p><strong>Niveau :</strong> Mention assez bien</p><hr><p><strong>Terminale :</strong></p><ul><li>Maths</li><li>Physique-chimie</li></ul><p><strong>Première :</strong></p><ul><li>Maths</li><li>Physique-chimie</li><li>Sciences de l'ingénieur</li></ul><p><strong>Options :</strong></p><ul><li>Anglais européen</li><li>Mathématiques expertes</li></ul><p><strong>Compétences développées :</strong> Rigueur scientifique, raisonnement logique, maîtrise de l'anglais technique, méthodes de travail autonome</p></div></div>
+
+<div id="exp1" class="popup"><div class="popup-content"><div class="close" onclick="closePopup()">✕</div><h3>Vice-président – CY Junior Engineering</h3><p><strong>Période :</strong> Juillet 2025 - Aujourd'hui · 8 mois</p><p><strong>Localisation :</strong> Cergy, Île-de-France, France · Hybride</p><p><strong>Organisation :</strong> CY Junior Engineering (Junior-Entreprise)</p><hr><p><strong>Missions principales :</strong></p><ul><li>Supervision et coordination de la structure</li><li>Développement et mise en œuvre de plan d'action avec les différents organes de la junior</li><li>Recrutement et formation des nouveaux membres</li><li>Organisation et préparation d'audits internes et blancs, mais surtout de l'audit CNJE annuel</li><li>Organisation de teambuildings après la démission du responsable événementiel</li></ul><p><strong>Compétences développées :</strong> Coordination d'équipe, Plan d'action, Recrutement et suite google</p></div></div>
+
+<div id="exp2" class="popup"><div class="popup-content"><div class="close" onclick="closePopup()">✕</div><h3>Chargé Performance – CY Junior Engineering</h3><p><strong>Période :</strong> Janvier 2025 - Juillet 2025 · 7 mois</p><p><strong>Localisation :</strong> Cergy, Île-de-France, France</p><p><strong>Organisation :</strong> CY Junior Engineering (Junior-Entreprise)</p><hr><p><strong>Missions principales :</strong></p><ul><li>Correction de documents contractuels</li><li>Implémentation de KPI</li><li>Création et amélioration de processus</li><li>Analyse AMDEC</li></ul><p><strong>Compétences développées :</strong> Révision de documents, Implémentation d'indicateurs clés de performance et Création et amélioration de processus</p></div></div>
+
+<!--A ajouter
+
+<div id="exp3" class="popup"><div class="popup-content"><div class="close" onclick="closePopup()">✕</div><h3>Chef de Projet – CY Junior Engineering</h3><p><strong>Période :</strong> Février 2026 - Aujourd'hui · 1 mois</p><p><strong>Type :</strong> Indépendant</p><p><strong>Organisation :</strong> CY Junior Engineering (Junior-Entreprise)</p><hr><p><strong>Missions principales :</strong></p><ul><li>Pilotage de projets de A à Z (cadrage, planification, exécution, clôture)</li><li>Recueil et analyse des besoins clients</li><li>Suivi de l'avancement, des délais et des livrables</li><li>Gestion de la relation client et points de suivi réguliers</li><li>Anticipation et gestion des risques projet</li></ul><p><strong>Compétences développées :</strong> Suivi de projets, Prospection et RDV clients</p></div></div>
+
+<div id="exp4" class="popup"><div class="popup-content"><div class="close" onclick="closePopup()">✕</div><h3>Responsable développement commercial – CY Junior Engineering</h3><p><strong>Période :</strong> Juillet 2025 - Aujourd'hui · 8 mois</p><p><strong>Localisation :</strong> Cergy, Île-de-France, France</p><p><strong>Organisation :</strong> CY Junior Engineering (Junior-Entreprise)</p><hr><p><strong>Missions principales :</strong></p><ul><li>Organisation et suivi de la stratégie commerciale de la Junior</li><li>Accompagnement des membres du pôle Activité Commercial avec le responsable suivi d'études</li><li>Formation des membres de l'activité commerciale</li><li>Communication lié au Développement Commercial</li></ul><p><strong>Compétences développées :</strong> Stratégie commerciale, Réflexion stratégique et Gestion de prospects</p></div></div>
+
+A ajouter-->
+
+<div id="proj1" class="popup"><div class="popup-content"><div class="close" onclick="closePopup()">✕</div><h3>Développement d'un Tower Defense en C</h3><p><strong>Date :</strong> Mai 2025</p><p><strong>Contexte :</strong> Projet académique d'envergure en programmation système</p><hr><p><strong>Fonctionnalités développées :</strong></p><ul><li><strong>Système de jeu complet :</strong> Mécaniques de défense avec placement stratégique de tours, vagues d'ennemis progressives avec difficulté croissante</li><li><strong>Système de tours évolutives :</strong> Différents types de tours (archer, canon, magique) avec upgrades et caractéristiques modulables</li><li><strong>Génération procédurale :</strong> Algorithme de création aléatoire de cartes avec chemins cohérents et validation de jouabilité</li><li><strong>Gestion de la progression :</strong> Système de sauvegarde/chargement permettant de reprendre une partie en cours</li><li><strong>Interface utilisateur :</strong> Affichage ASCII art en terminal avec rafraîchissement dynamique</li></ul><p><strong>Aspects techniques :</strong></p><ul><li>Gestion manuelle de la mémoire (malloc/free) sans fuite mémoire</li><li>Structures de données optimisées (listes chaînées, tableaux dynamiques)</li><li>Architecture modulaire avec séparation des responsabilités</li><li>Gestion d'événements et boucle de jeu temps-réel</li></ul><p><strong>Compétences mobilisées :</strong> Programmation C avancée, algorithmique, debugging, optimisation mémoire, conception logicielle</p></div></div>
+
+<div id="proj2" class="popup"><div class="popup-content"><div class="close" onclick="closePopup()">✕</div><h3>Projet de synthèse de données - Système de distribution d'eau</h3><p><strong>Date :</strong> Décembre 2024</p><p><strong>Contexte :</strong> Projet d'analyse et visualisation de données issues d'un réseau de distribution d'eau</p><hr><p><strong>Architecture du projet :</strong></p><ul><li><strong>Pipeline de traitement :</strong> Script Shell orchestrant l'ensemble du processus d'analyse (extraction, transformation, chargement)</li><li><strong>Programme C :</strong> Moteur de calcul pour le traitement intensif de grandes quantités de données</li><li><strong>Visualisation :</strong> Génération automatique d'histogrammes et de graphiques statistiques</li></ul><p><strong>Fonctionnalités clés :</strong></p><ul><li>Calcul précis des pertes d'eau dans le réseau (fuites, évaporation, erreurs de mesure)</li><li>Analyse statistique des flux par segment de réseau</li><li>Détection d'anomalies et points critiques</li><li>Export des résultats en formats CSV et graphiques</li></ul><p><strong>Optimisations techniques :</strong></p><ul><li><strong>Structures AVL :</strong> Implémentation d'arbres équilibrés pour recherches et insertions en O(log n)</li><li><strong>Gestion mémoire efficace :</strong> Allocation dynamique optimisée, libération systématique, profiling avec Valgrind</li><li><strong>Traitement par batch :</strong> Gestion de fichiers volumineux sans saturation mémoire</li></ul><p><strong>Technologies :</strong> C (calcul), Bash (automatisation), Gnuplot (visualisation)</p><p><strong>Compétences mobilisées :</strong> Structures de données avancées, scripting système, analyse de données, optimisation algorithmique</p></div></div>
+
+<div id="cert1" class="popup"><div class="popup-content"><div class="close" onclick="closePopup()">✕</div><h3>The Mantu Manager Program</h3><p><strong>Organisme :</strong> Mantu (Groupe de conseil international)</p><p><strong>Date :</strong> 2025</p><hr><p><strong>Description du programme :</strong></p><p>Formation professionnelle intensive aux techniques commerciales et managériales modernes, délivrée par des experts du conseil en stratégie.</p><p><strong>Modules de formation :</strong></p><ul><li><strong>Stratégies de prospection :</strong> Identification et qualification de prospects, techniques d'approche multicanales (LinkedIn, email, téléphone), scoring de leads</li><li><strong>Gestion des rendez-vous :</strong> Préparation méthodique, conduite d'entretiens structurés, techniques de découverte des besoins clients</li><li><strong>Techniques de vente :</strong> Argumentation commerciale, traitement des objections, closing efficace, négociation win-win</li><li><strong>Analyse commerciale :</strong> Utilisation de CRM, suivi de pipeline, analyse de taux de conversion</li><li><strong>Communication professionnelle :</strong> Pitch elevator, storytelling commercial, communication persuasive</li></ul><p><strong>Compétences développées :</strong></p><ul><li>Prospection commerciale B2B</li><li>Négociation et argumentation</li><li>Gestion de la relation client</li><li>Analyse de performance commerciale</li><li>Communication stratégique</li></ul><p><strong>Mise en pratique :</strong> Exercices de simulation, jeux de rôle, études de cas réels d'entreprises</p></div></div>
+
+<script>
+
+// Animation des barres de progression des langues
+document.addEventListener('DOMContentLoaded', function() {
+    const languageItems = document.querySelectorAll('.language-item');
+    
+    languageItems.forEach(item => {
+        const progressFill = item.querySelector('.progress-fill');
+        const level = progressFill.getAttribute('data-level');
+        progressFill.style.setProperty('--level', level);
+        
+        item.addEventListener('mouseenter', function() {
+            progressFill.style.width = level + '%';
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            progressFill.style.width = '0%';
+        });
+    });
+});
+
+function resetSkills() {
+    document.querySelectorAll('.skill').forEach(s => s.classList.remove('active'));
+}
+
+function highlightSkills(skills) {
+    skills.forEach(skill => {
+        if(skill.trim() !== ""){
+            const el = document.getElementById(skill.trim());
+            if(el) el.classList.add('active');
+        }
+    });
+}
+
+function openCard(event, id) {
+    resetSkills();
+    const skills = event.currentTarget.getAttribute("data-skills").split(",");
+    highlightSkills(skills);
+    document.getElementById(id).style.display = "flex";
+}
+
+function closePopup() {
+    document.querySelectorAll('.popup').forEach(p => p.style.display = "none");
+    resetSkills();
+}
+
+</script>
+
+</body>
+</html>
