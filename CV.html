@@ -78,7 +78,7 @@ body {
 }
 
 
-/* Compétences interactives */
+/* Hard skills */
 
 .skills {
     display: flex;
@@ -99,6 +99,51 @@ body {
     background: #3b82f6;
     box-shadow: 0 0 8px #3b82f6;
     transform: scale(1.1);
+}
+
+/* Soft skills */
+
+.soft-skills-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-top: 6px;
+}
+
+.soft-skill-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.08);
+    border-left: 3px solid rgba(59,130,246,0.6);
+    transition: all 0.3s ease;
+}
+
+.soft-skill-item:hover {
+    background: rgba(255,255,255,0.15);
+    border-left-color: #60a5fa;
+    transform: translateX(3px);
+}
+
+.soft-skill-item.active {
+    background: rgba(59,130,246,0.25);
+    border-left-color: #3b82f6;
+    box-shadow: 0 0 8px rgba(59,130,246,0.3);
+}
+
+.soft-skill-icon {
+    font-size: 13px;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.soft-skill-text {
+    font-size: 10px;
+    line-height: 1.35;
+    color: rgba(255,255,255,0.92);
 }
 
 /* Langues avec barres de progression */
@@ -348,7 +393,7 @@ body {
 <p><img src="https://cdn-icons-png.flaticon.com/512/4138/4138130.png" alt="LinkedIn" style="width:16px; vertical-align:middle; margin-right:6px;"><u><a href="https://linkedin.com/in/lucien-leheudre" target="_blank">LinkedIn</a></u></p>
 <p><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="Github" style="width:16px; vertical-align:middle; margin-right:6px;"><u><a href="https://github.com/Snowsurf-007" target="_blank">Github</a></u></p>
 
-<br>
+
 <h2>Hard skills</h2>
 <div class="skills">
     <div class="skill" id="C">Langage C</div>
@@ -362,14 +407,35 @@ body {
 
 <br>
 <h2>Soft skills</h2>
-<div class="skills">
-    <div class="skill" id="Gestion">Gestion, recrutement et formation d’équipe</div>
-    <div class="skill" id="Pilotage">Pilotage stratégique via des plans d’actions</div>
-    <div class="skill" id="SMQ">SMQ (KPI, OKR, processus et Analyse de risques)</div>
-    <div class="skill" id="Client">Relation Client et suivi de projet</div>
+<div class="soft-skills-grid">
+    <div class="soft-skill-item" id="Gestion">
+        <span class="soft-skill-icon">👥</span>
+        <span class="soft-skill-text">Gestion, recrutement et formation d'équipe</span>
+    </div>
+    <div class="soft-skill-item" id="Pilotage">
+        <span class="soft-skill-icon">🎯</span>
+        <span class="soft-skill-text">Pilotage stratégique</span>
+    </div>
+    <div class="soft-skill-item" id="SMQ">
+        <span class="soft-skill-icon">📊</span>
+        <span class="soft-skill-text">SMQ - KPI, OKR, processus et analyse de risques</span>
+    </div>
+    <div class="soft-skill-item" id="Client">
+        <span class="soft-skill-icon">🤝</span>
+        <span class="soft-skill-text">Relation client et suivi de projet</span>
+    </div>
+    <div class="soft-skill-item" id="Budget">
+        <span class="soft-skill-icon">💰</span>
+        <span class="soft-skill-text">Élaboration, suivi et ajustement d’un budget</span>
+    </div>
+
+    <div class="soft-skill-item" id="Tresorerie">
+        <span class="soft-skill-icon">🏦</span>
+        <span class="soft-skill-text">Trésorerie, ERB, gestion des factures</span>
+    </div>
 </div>
 
-<br>
+
 <h2>Langues</h2>
 <div class="language-item">
     <p>Français (Langue maternelle)</p>
@@ -390,14 +456,12 @@ body {
     </div>
 </div>
 
-<br>
 <h2>Centres d'intérêt</h2>
 <p> - Mathématiques</p>
 <p> - Sciences</p>
 <p> - Programmation</p>
 <p> - Escalade</p>
 <p> - Plongée sous-marine</p>
-
 </div>
 
 <!-- DROITE -->
@@ -429,16 +493,22 @@ body {
 <h2>Expériences</h2>
 <div class="cards">
 
-<div class="card" onclick="openCard(event,'exp1')" data-skills="Gestion,Pilotage">
-    <div class="card-title">Vice-Président - CY Junior Engineering</div>
-    <div class="card-date">juil. 2025 à mars 2026</div>
-    <div class="card-desc">Supervision et coordination des pôles pour assurer l'atteinte des objectifs stratégiques de la Junior entreprise. Développement et mise en œuvre de plans d'action pour améliorer la performance globale.</div>
+<div class="card" onclick="openCard(event,'exp3')" data-skills="Gestion,Budget,Tresorerie">
+    <div class="card-title">Trésorier - CY Junior Engineering</div>
+    <div class="card-date">mars 2026 à mars 2027</div>
+    <div class="card-desc">Gestion financière de la Junior-Entreprise : suivi des budgets, élaboration des prévisions financières, et optimisation des ressources pour soutenir les projets stratégiques.</div>
 </div>
 
-<div class="card" onclick="openCard(event,'exp2')" data-skills="SMQ">
-    <div class="card-title">Chargé Performance - CY Junior Engineering</div>
-    <div class="card-date">déc. 2024 à juil. 2025</div>
-    <div class="card-desc">Correction de documents contractuels d'étude. Mise en place et refonte de KPI et processus. Analyse de données dans un but d'amélioration continue de la structure.</div>
+<div class="card" onclick="openCard(event,'exp2')" data-skills="Gestion,Pilotage,SMQ">
+    <div class="card-title">Vice-Président - CY Junior Engineering</div>
+    <div class="card-date">juil. 2025 à mars 2026</div>
+    <div class="card-desc">Supervision et coordination des pôles pour assurer l'atteinte des objectifs stratégiques de la Junior entreprise. Développement et mise en œuvre de plans d'action</div>
+</div>
+
+<div class="card" onclick="openCard(event,'exp1')" data-skills="Client">
+    <div class="card-title">Chef de projet - CY Junior Engineering</div>
+    <div class="card-date">jan. 2026</div>
+    <div class="card-desc">Suivi de missions avec différents clients et étudiants de CY Tech</div>
 </div>
 
 </div>
@@ -446,16 +516,19 @@ body {
 <h2>Projets</h2>
 <div class="cards">
 
-<div class="card" onclick="openCard(event,'proj1')" data-skills="C">
-    <div class="card-title">Développement d'un Tower défense en C</div>
-    <div class="card-date">mai 2025</div>
-    <div class="card-desc">Conception et implémentation des mécaniques de défense et d'attaque et d'un système de tours avec caractéristiques évolutives. Génération aléatoire de cartes avec chemins.</div>
+<div class="card" onclick="openCard(event,'proj3')" data-skills="HTML, CSS, PHP, JS">
+    <div class="card-title">Développement d'un site Web</div>
+    <div class="card-date">jan. 2026 à mai. 2026</div>
 </div>
 
-<div class="card" onclick="openCard(event,'proj2')" data-skills="C,Bash">
+<div class="card" onclick="openCard(event,'proj2')" data-skills="C,Bash, Makefile">
     <div class="card-title">Projet de synthèse de données d'un système de distribution d'eau</div>
     <div class="card-date">nov. 2025</div>
-    <div class="card-desc">Script Shell + programme C pour analyser et visualiser des données. Génération d'histogrammes et calcul des pertes d'eau. Optimisation avec des AVL et gestion de la mémoire efficace.</div>
+</div>
+
+<div class="card" onclick="openCard(event,'proj1')" data-skills="C, Makefile">
+    <div class="card-title">Développement d'un Tower défense</div>
+    <div class="card-date">mai 2025</div>
 </div>
 
 </div>
@@ -463,7 +536,7 @@ body {
 <h2>Certifications</h2>
 <div class="cards">
 
-<div class="card" onclick="openCard(event,'cert1')" data-skills="">
+<div class="card" onclick="openCard(event,'cert1')" data-skills="Client">
     <div class="card-title">The Mantu Manager Program - Mantu</div>
     <div class="card-date">2025</div>
     <div class="card-desc">Élaboration de stratégies de prospection, optimisation des RDV prospects et renforcement des techniques commerciales.</div>
@@ -474,29 +547,239 @@ body {
 </div>
 </div>
 
-<!-- ========== POPUPS ========== -->
+<!-- POPUPS -->
 
-<div id="form1" class="popup"><div class="popup-content"><div class="close" onclick="closePopup()">✕</div><h3>CY Tech - Classe préparatoire intégrée</h3><p><strong>Période :</strong> Janvier 2024 - Juillet 2026</p><p><strong>Localisation :</strong> CY Tech, Cergy</p><hr><p><strong>1ère année :</strong></p><ul><li>Mathématiques (Algèbre (linéaire et non linéaire) et Analyse)</li><li>Physique (Analyse dimensionnelle, Optique et lumière, Mécanique et dynamique du point)</li><li>Informatique (Programmation en C et bases des alghorithmes)</li><li>Humanité design : Communication & expression, Interaction & coopération, Méthode projet design</li><li>Anglais</li><li>Projets en Informatique et en Humanité design</li></ul><p><strong>2ème année :</strong></p><ul><li>Mathématiques (Séries, Analyse dans ℝⁿ, Algèbre bilinéaire, Probabilités et Intégration)</li><li>Électromagnétisme, physique des ondes et Mécanique quantique</li><li>Informatique (Programmation en C, Script Shell, HTML5, CSS, Java Script, PHP et DOM)</li><li>Humanité design : Sciences humaines et sociales, Communication & expression, Interaction & coopération et Éthique</li><li>Anglais</li><li>Projets en Informatique, en physique et en Humanité design</li></ul></div></div>
+<div id="form1" class="popup">
+    <div class="popup-content">
+        <div class="close" onclick="closePopup()">✕</div>
+        <h3>CY Tech - Classe préparatoire intégrée</h3>
+        <p><strong>Période :</strong> Janvier 2024 - Juillet 2026</p>
+        <p><strong>Localisation :</strong> CY Tech, Cergy</p>
+        <hr>
+        <p><strong>1ère année :</strong></p>
+        <ul>
+            <li>Mathématiques (Algèbre (linéaire et non linéaire) et Analyse)</li>
+            <li>Physique (Analyse dimensionnelle, Optique et lumière, Mécanique et dynamique du point)</li>
+            <li>Informatique (Programmation en C et bases des alghorithmes)</li>
+            <li>Humanité design : Communication & expression, Interaction & coopération, Méthode projet design</li>
+            <li>Anglais</li>
+            <li>Projets en Informatique et en Humanité design</li>
+        </ul>
+        <p><strong>2ème année :</strong></p>
+        <ul>
+            <li>Mathématiques (Séries, Analyse dans ℝⁿ, Algèbre bilinéaire, Probabilités et Intégration)</li>
+            <li>Électromagnétisme, physique des ondes et Mécanique quantique</li>
+            <li>Informatique (Programmation en C, Script Shell, HTML5, CSS, Java Script, PHP et DOM)</li>
+            <li>Humanité design : Sciences humaines et sociales, Communication & expression, Interaction & coopération et Éthique</li>
+            <li>Anglais</li>
+            <li>Projets en Informatique, en physique et en Humanité design</li>
+        </ul>
+    </div>
+</div>
 
-<div id="form2" class="popup"><div class="popup-content"><div class="close" onclick="closePopup()">✕</div><h3>Lycée Jean Perrin - Baccalauréat général, Maths/Physique-chimie</h3><p><strong>Période :</strong> Septembre 2021 - Juillet 2024</p><p><strong>Établissement :</strong> Lycée Jean Perrin, Saint-Ouen-l'Aumône</p><p><strong>Niveau :</strong> Mention assez bien</p><hr><p><strong>Terminale :</strong></p><ul><li>Maths</li><li>Physique-chimie</li></ul><p><strong>Première :</strong></p><ul><li>Maths</li><li>Physique-chimie</li><li>Sciences de l'ingénieur</li></ul><p><strong>Options :</strong></p><ul><li>Anglais européen</li><li>Mathématiques expertes</li></ul><p><strong>Compétences développées :</strong> Rigueur scientifique, raisonnement logique, maîtrise de l'anglais technique, méthodes de travail autonome</p></div></div>
+<div id="form2" class="popup">
+    <div class="popup-content">
+        <div class="close" onclick="closePopup()">✕</div>
+        <h3>Lycée Jean Perrin - Baccalauréat général, Maths/Physique-chimie</h3>
+        <p><strong>Période :</strong> Septembre 2021 - Juillet 2024</p>
+        <p><strong>Établissement :</strong> Lycée Jean Perrin, Saint-Ouen-l'Aumône</p>
+        <p><strong>Niveau :</strong> Mention assez bien</p>
+        <hr>
+        <p><strong>Terminale :</strong></p>
+        <ul>
+            <li>Maths</li>
+            <li>Physique-chimie</li>
+        </ul>
+        <p><strong>Première :</strong></p>
+        <ul>
+            <li>Maths</li>
+            <li>Physique-chimie</li>
+            <li>Sciences de l'ingénieur</li>
+        </ul>
+        <p><strong>Options :</strong></p>
+        <ul>
+            <li>Anglais européen</li>
+            <li>Mathématiques expertes</li>
+        </ul>
+        <p><strong>Compétences développées :</strong> Rigueur scientifique, raisonnement logique, maîtrise de l'anglais technique, méthodes de travail autonome</p>
+    </div>
+</div>
 
-<div id="exp1" class="popup"><div class="popup-content"><div class="close" onclick="closePopup()">✕</div><h3>Vice-président – CY Junior Engineering</h3><p><strong>Période :</strong> Juillet 2025 - Aujourd'hui · 8 mois</p><p><strong>Localisation :</strong> Cergy, Île-de-France, France · Hybride</p><p><strong>Organisation :</strong> CY Junior Engineering (Junior-Entreprise)</p><hr><p><strong>Missions principales :</strong></p><ul><li>Supervision et coordination de la structure</li><li>Développement et mise en œuvre de plan d'action avec les différents organes de la junior</li><li>Recrutement et formation des nouveaux membres</li><li>Organisation et préparation d'audits internes et blancs, mais surtout de l'audit CNJE annuel</li><li>Organisation de teambuildings après la démission du responsable événementiel</li></ul><p><strong>Compétences développées :</strong> Coordination d'équipe, Plan d'action, Recrutement et suite google</p></div></div>
+<div id="exp3" class="popup">
+  <div class="popup-content">
+    <div class="close" onclick="closePopup()">✕</div>
+    <h3>Trésorier – CY Junior Engineering</h3>
+    <p><strong>Période :</strong> Juillet 2025 - Aujourd'hui · 8 mois</p>
+    <p><strong>Localisation :</strong> Cergy, Île-de-France, France · Hybride</p>
+    <p><strong>Organisation :</strong> CY Junior Engineering (Junior-Entreprise)</p>
+    <hr>
+    <p><strong>Missions principales :</strong></p>
+    <ul>
+      <li>Gestion complète de la trésorerie et suivi des flux financiers</li>
+      <li>Élaboration et pilotage du budget annuel</li>
+      <li>Suivi des paiements clients et fournisseurs (facturation, relances, encaissements)</li>
+      <li>Préparation des bilans financiers et reporting au CA</li>
+      <li>Préparation des documents financiers pour l’audit CNJE annuel</li>
+      <li>Optimisation des outils de suivi financier (tableaux de bord, automatisations)</li>
+    </ul>
+    <p><strong>Compétences développées :</strong> Gestion budgétaire, Analyse financière, Rigueur comptable, Reporting, Maîtrise d’Excel et Google Sheets</p>
+  </div>
+</div>
 
-<div id="exp2" class="popup"><div class="popup-content"><div class="close" onclick="closePopup()">✕</div><h3>Chargé Performance – CY Junior Engineering</h3><p><strong>Période :</strong> Janvier 2025 - Juillet 2025 · 7 mois</p><p><strong>Localisation :</strong> Cergy, Île-de-France, France</p><p><strong>Organisation :</strong> CY Junior Engineering (Junior-Entreprise)</p><hr><p><strong>Missions principales :</strong></p><ul><li>Correction de documents contractuels</li><li>Implémentation de KPI</li><li>Création et amélioration de processus</li><li>Analyse AMDEC</li></ul><p><strong>Compétences développées :</strong> Révision de documents, Implémentation d'indicateurs clés de performance et Création et amélioration de processus</p></div></div>
+<div id="exp2" class="popup">
+    <div class="popup-content">
+        <div class="close" onclick="closePopup()">✕</div>
+        <h3>Vice-président – CY Junior Engineering</h3>
+        <p><strong>Période :</strong> Juillet 2025 - Aujourd'hui · 8 mois</p>
+        <p><strong>Localisation :</strong> Cergy, Île-de-France, France · Hybride</p>
+        <p><strong>Organisation :</strong> CY Junior Engineering (Junior-Entreprise)</p><hr><p><strong>Missions principales :</strong></p>
+        <ul>
+            <li>Supervision et coordination de la structure</li>
+            <li>Développement et mise en œuvre de plan d'action avec les différents organes de la junior</li>
+            <li>Recrutement et formation des nouveaux membres</li><li>Organisation et préparation d'audits internes et blancs, mais surtout de l'audit CNJE annuel</li>
+            <li>Organisation de teambuildings après la démission du responsable événementiel</li>
+        </ul>
+        <p><strong>Compétences développées :</strong> Coordination d'équipe, Plan d'action, Recrutement et suite google</p>
+    </div>
+</div>
 
-<!--A ajouter
+<div id="exp1" class="popup">
+    <div class="popup-content">
+        <div class="close" onclick="closePopup()">✕</div>
+        <h3>Chef de Projet – CY Junior Engineering</h3>
+        <p><strong>Période :</strong> Janvier 2026 - Aujourd'hui · 1 mois</p>
+        <p><strong>Localisation :</strong> Cergy, Île-de-France, France · Hybride</p>
+        <p><strong>Organisation :</strong> CY Junior Engineering (Junior-Entreprise)</p>
+        <hr>
+        <p><strong>Missions principales :</strong></p>
+        <ul>
+            <li>Pilotage de projets de A à Z (cadrage, planification, exécution, clôture)</li>
+            <li>Recueil et analyse des besoins clients</li>
+            <li>Suivi de l'avancement, des délais et des livrables</li>
+            <li>Gestion de la relation client et points de suivi réguliers</li>
+            <li>Anticipation et gestion des risques projet</li>
+        </ul>
+        <p><strong>Compétences développées :</strong> Suivi de projets, Prospection et RDV clients</p>
+    </div>
+</div>
 
-<div id="exp3" class="popup"><div class="popup-content"><div class="close" onclick="closePopup()">✕</div><h3>Chef de Projet – CY Junior Engineering</h3><p><strong>Période :</strong> Février 2026 - Aujourd'hui · 1 mois</p><p><strong>Type :</strong> Indépendant</p><p><strong>Organisation :</strong> CY Junior Engineering (Junior-Entreprise)</p><hr><p><strong>Missions principales :</strong></p><ul><li>Pilotage de projets de A à Z (cadrage, planification, exécution, clôture)</li><li>Recueil et analyse des besoins clients</li><li>Suivi de l'avancement, des délais et des livrables</li><li>Gestion de la relation client et points de suivi réguliers</li><li>Anticipation et gestion des risques projet</li></ul><p><strong>Compétences développées :</strong> Suivi de projets, Prospection et RDV clients</p></div></div>
+<div id="proj1" class="popup">
+    <div class="popup-content">
+        <div class="close" onclick="closePopup()">✕</div>
+        <h3>Développement d'un Tower Defense en C</h3>
+        <p><strong>Date :</strong> Mai 2025</p>
+        <p><strong>Contexte :</strong> Projet académique d'envergure en programmation C</p>
+        <hr>
+        <p><strong>Fonctionnalités développées :</strong></p>
+        <ul>
+            <li><strong>Système de jeu complet :</strong> Mécaniques de défense avec placement stratégique de tours, vagues d'ennemis progressives avec difficulté croissante</li>
+            <li><strong>Système de tours évolutives :</strong> Différents types de tours (archer, canon, magique) avec upgrades et caractéristiques modulables</li>
+            <li><strong>Génération procédurale :</strong> Algorithme de création aléatoire de cartes avec chemins cohérents et validation de jouabilité</li>
+            <li><strong>Gestion de la progression :</strong> Système de sauvegarde/chargement permettant de reprendre une partie en cours</li>
+            <li><strong>Interface utilisateur :</strong> Affichage ASCII art en terminal avec rafraîchissement dynamique</li>
+        </ul>
+        <p><strong>Aspects techniques :</strong></p>
+        <ul>
+            <li>Gestion manuelle de la mémoire (malloc/free) sans fuite mémoire</li>
+            <li>Structures de données optimisées (listes chaînées, tableaux dynamiques)</li>
+            <li>Architecture modulaire avec séparation des responsabilités</li>
+            <li>Gestion d'événements et boucle de jeu temps-réel</li>
+        </ul>
+        <p><strong>Compétences mobilisées :</strong> Programmation C avancée, algorithmique, debugging, optimisation mémoire, conception logicielle</p>
+    </div>
+</div>
 
-<div id="exp4" class="popup"><div class="popup-content"><div class="close" onclick="closePopup()">✕</div><h3>Responsable développement commercial – CY Junior Engineering</h3><p><strong>Période :</strong> Juillet 2025 - Aujourd'hui · 8 mois</p><p><strong>Localisation :</strong> Cergy, Île-de-France, France</p><p><strong>Organisation :</strong> CY Junior Engineering (Junior-Entreprise)</p><hr><p><strong>Missions principales :</strong></p><ul><li>Organisation et suivi de la stratégie commerciale de la Junior</li><li>Accompagnement des membres du pôle Activité Commercial avec le responsable suivi d'études</li><li>Formation des membres de l'activité commerciale</li><li>Communication lié au Développement Commercial</li></ul><p><strong>Compétences développées :</strong> Stratégie commerciale, Réflexion stratégique et Gestion de prospects</p></div></div>
+<div id="proj2" class="popup">
+    <div class="popup-content">
+        <div class="close" onclick="closePopup()">✕</div>
+        <h3>Projet de synthèse de données - Système de distribution d'eau</h3>
+        <p><strong>Date :</strong> Novembre 2025</p>
+        <p><strong>Contexte :</strong> Projet d'analyse et visualisation de données issues d'un réseau de distribution d'eau</p>
+        <hr>
+        <p><strong>Architecture du projet :</strong></p>
+        <ul>
+            <li><strong>Pipeline de traitement :</strong> Script Shell orchestrant l'ensemble du processus d'analyse (extraction, transformation, chargement)</li>
+            <li><strong>Programme C :</strong> Moteur de calcul pour le traitement intensif de grandes quantités de données</li>
+            <li><strong>Visualisation :</strong> Génération automatique d'histogrammes et de graphiques statistiques</li>
+        </ul>
+        <p><strong>Fonctionnalités clés :</strong></p>
+        <ul>
+            <li>Calcul précis des pertes d'eau dans le réseau (fuites, évaporation, erreurs de mesure)</li>
+            <li>Analyse statistique des flux par segment de réseau</li>
+            <li>Détection d'anomalies et points critiques</li>
+            <li>Export des résultats en formats CSV et graphiques</li>
+        </ul>
+        <p><strong>Optimisations techniques :</strong></p>
+        <ul>
+            <li><strong>Structures AVL :</strong> Implémentation d'arbres équilibrés pour recherches et insertions en O(log n)</li>
+            <li><strong>Gestion mémoire efficace :</strong> Allocation dynamique optimisée, libération systématique, profiling avec Valgrind</li>
+            <li><strong>Traitement par batch :</strong> Gestion de fichiers volumineux sans saturation mémoire</li>
+        </ul>
+        <p><strong>Technologies :</strong> C (calcul), Bash (automatisation), Gnuplot (visualisation)</p>
+        <p><strong>Compétences mobilisées :</strong> Structures de données avancées, scripting système, analyse de données, optimisation algorithmique</p>
+    </div>
+</div>
 
-A ajouter-->
+<div id="proj3" class="popup">
+    <div class="popup-content">
+        <div class="close" onclick="closePopup()">✕</div>
+        <h3>Cosmotek - Développement d’un site web complet pour restaurant</h3>
+        <p><strong>Date :</strong> Janvier 2026 – Aujourd’hui</p>
+        <p><strong>Contexte :</strong> Conception et développement d’une application web complète permettant à un restaurant ou une chaîne de restaurants de gérer l’ensemble du processus de commande en ligne.</p>
+        <hr>
+        <p><strong>Architecture et conception :</strong></p>
+        <ul>
+            <li>Application multi-utilisateurs : client, administrateur, restaurateur, livreur</li>
+            <li>Conception d’interfaces adaptées aux besoins spécifiques de chaque rôle</li>
+            <li>Structure modulaire et évolutive</li>
+        </ul>
+        <p><strong>Développement :</strong></p>
+        <ul>
+            <li>Intégration front-end en HTML & CSS (charte graphique, pages statiques, responsive)</li>
+            <li>Développement back-end en PHP (gestion des comptes, commandes, authentification)</li>
+            <li>Ajout d’interactions dynamiques en JavaScript</li>
+        </ul>
+        <p><strong>Fonctionnalités clés :</strong></p>
+        <ul>
+            <li>Gestion complète du cycle de commande (création, validation, suivi)</li>
+            <li>Système de gestion des utilisateurs et des rôles</li>
+            <li>Interface d’administration pour le suivi des commandes</li>
+            <li>Gestion des statuts de livraison</li>
+        </ul>
+        <p><strong>Technologies :</strong> HTML, CSS, PHP, JavaScript</p>
+        <p><strong>Compétences mobilisées :</strong> Développement full-stack, conception d’architecture web, gestion des rôles utilisateurs, structuration de base de données, travail en équipe via GitHub</p>
+    </div>
+</div>
 
-<div id="proj1" class="popup"><div class="popup-content"><div class="close" onclick="closePopup()">✕</div><h3>Développement d'un Tower Defense en C</h3><p><strong>Date :</strong> Mai 2025</p><p><strong>Contexte :</strong> Projet académique d'envergure en programmation système</p><hr><p><strong>Fonctionnalités développées :</strong></p><ul><li><strong>Système de jeu complet :</strong> Mécaniques de défense avec placement stratégique de tours, vagues d'ennemis progressives avec difficulté croissante</li><li><strong>Système de tours évolutives :</strong> Différents types de tours (archer, canon, magique) avec upgrades et caractéristiques modulables</li><li><strong>Génération procédurale :</strong> Algorithme de création aléatoire de cartes avec chemins cohérents et validation de jouabilité</li><li><strong>Gestion de la progression :</strong> Système de sauvegarde/chargement permettant de reprendre une partie en cours</li><li><strong>Interface utilisateur :</strong> Affichage ASCII art en terminal avec rafraîchissement dynamique</li></ul><p><strong>Aspects techniques :</strong></p><ul><li>Gestion manuelle de la mémoire (malloc/free) sans fuite mémoire</li><li>Structures de données optimisées (listes chaînées, tableaux dynamiques)</li><li>Architecture modulaire avec séparation des responsabilités</li><li>Gestion d'événements et boucle de jeu temps-réel</li></ul><p><strong>Compétences mobilisées :</strong> Programmation C avancée, algorithmique, debugging, optimisation mémoire, conception logicielle</p></div></div>
+<div id="cert1" class="popup">
+    <div class="popup-content">
+        <div class="close" onclick="closePopup()">✕</div>
+        <h3>The Mantu Manager Program</h3>
+        <p><strong>Organisme :</strong> Mantu (Groupe de conseil international)</p>
+        <p><strong>Date :</strong> 2025</p>
+        <hr>
+        <p><strong>Description du programme :</strong></p>
+        <p>Formation professionnelle intensive aux techniques commerciales et managériales modernes, délivrée par des experts du conseil en stratégie.</p>
+        <p><strong>Modules de formation :</strong></p>
+        <ul>
+            <li><strong>Stratégies de prospection :</strong> Identification et qualification de prospects, techniques d'approche multicanales (LinkedIn, email, téléphone), scoring de leads</li>
+            <li><strong>Gestion des rendez-vous :</strong> Préparation méthodique, conduite d'entretiens structurés, techniques de découverte des besoins clients</li>
+            <li><strong>Techniques de vente :</strong> Argumentation commerciale, traitement des objections, closing efficace, négociation win-win</li>
+            <li><strong>Analyse commerciale :</strong> Utilisation de CRM, suivi de pipeline, analyse de taux de conversion</li>
+            <li><strong>Communication professionnelle :</strong> Pitch elevator, storytelling commercial, communication persuasive</li>
+        </ul>
+        <p><strong>Compétences développées :</strong></p>
+        <ul>
+            <li>Prospection commerciale B2B</li>
+            <li>Négociation et argumentation</li>
+            <li>Gestion de la relation client</li>
+            <li>Analyse de performance commerciale</li>
+            <li>Communication stratégique</li>
+        </ul>
+        <p><strong>Mise en pratique :</strong> Exercices de simulation, jeux de rôle, études de cas réels d'entreprises</p>
+    </div>
+</div>
 
-<div id="proj2" class="popup"><div class="popup-content"><div class="close" onclick="closePopup()">✕</div><h3>Projet de synthèse de données - Système de distribution d'eau</h3><p><strong>Date :</strong> Décembre 2024</p><p><strong>Contexte :</strong> Projet d'analyse et visualisation de données issues d'un réseau de distribution d'eau</p><hr><p><strong>Architecture du projet :</strong></p><ul><li><strong>Pipeline de traitement :</strong> Script Shell orchestrant l'ensemble du processus d'analyse (extraction, transformation, chargement)</li><li><strong>Programme C :</strong> Moteur de calcul pour le traitement intensif de grandes quantités de données</li><li><strong>Visualisation :</strong> Génération automatique d'histogrammes et de graphiques statistiques</li></ul><p><strong>Fonctionnalités clés :</strong></p><ul><li>Calcul précis des pertes d'eau dans le réseau (fuites, évaporation, erreurs de mesure)</li><li>Analyse statistique des flux par segment de réseau</li><li>Détection d'anomalies et points critiques</li><li>Export des résultats en formats CSV et graphiques</li></ul><p><strong>Optimisations techniques :</strong></p><ul><li><strong>Structures AVL :</strong> Implémentation d'arbres équilibrés pour recherches et insertions en O(log n)</li><li><strong>Gestion mémoire efficace :</strong> Allocation dynamique optimisée, libération systématique, profiling avec Valgrind</li><li><strong>Traitement par batch :</strong> Gestion de fichiers volumineux sans saturation mémoire</li></ul><p><strong>Technologies :</strong> C (calcul), Bash (automatisation), Gnuplot (visualisation)</p><p><strong>Compétences mobilisées :</strong> Structures de données avancées, scripting système, analyse de données, optimisation algorithmique</p></div></div>
-
-<div id="cert1" class="popup"><div class="popup-content"><div class="close" onclick="closePopup()">✕</div><h3>The Mantu Manager Program</h3><p><strong>Organisme :</strong> Mantu (Groupe de conseil international)</p><p><strong>Date :</strong> 2025</p><hr><p><strong>Description du programme :</strong></p><p>Formation professionnelle intensive aux techniques commerciales et managériales modernes, délivrée par des experts du conseil en stratégie.</p><p><strong>Modules de formation :</strong></p><ul><li><strong>Stratégies de prospection :</strong> Identification et qualification de prospects, techniques d'approche multicanales (LinkedIn, email, téléphone), scoring de leads</li><li><strong>Gestion des rendez-vous :</strong> Préparation méthodique, conduite d'entretiens structurés, techniques de découverte des besoins clients</li><li><strong>Techniques de vente :</strong> Argumentation commerciale, traitement des objections, closing efficace, négociation win-win</li><li><strong>Analyse commerciale :</strong> Utilisation de CRM, suivi de pipeline, analyse de taux de conversion</li><li><strong>Communication professionnelle :</strong> Pitch elevator, storytelling commercial, communication persuasive</li></ul><p><strong>Compétences développées :</strong></p><ul><li>Prospection commerciale B2B</li><li>Négociation et argumentation</li><li>Gestion de la relation client</li><li>Analyse de performance commerciale</li><li>Communication stratégique</li></ul><p><strong>Mise en pratique :</strong> Exercices de simulation, jeux de rôle, études de cas réels d'entreprises</p></div></div>
 
 <script>
 
@@ -517,10 +800,23 @@ document.addEventListener('DOMContentLoaded', function() {
             progressFill.style.width = '0%';
         });
     });
+
+    // Hover sur les cartes → highlight des skills (sans clic)
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            resetSkills();
+            const skills = this.getAttribute('data-skills').split(',');
+            highlightSkills(skills);
+        });
+        card.addEventListener('mouseleave', function() {
+            resetSkills();
+        });
+    });
 });
 
 function resetSkills() {
-    document.querySelectorAll('.skill').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.skill, .soft-skill-item').forEach(s => s.classList.remove('active'));
 }
 
 function highlightSkills(skills) {
@@ -533,15 +829,11 @@ function highlightSkills(skills) {
 }
 
 function openCard(event, id) {
-    resetSkills();
-    const skills = event.currentTarget.getAttribute("data-skills").split(",");
-    highlightSkills(skills);
     document.getElementById(id).style.display = "flex";
 }
 
 function closePopup() {
     document.querySelectorAll('.popup').forEach(p => p.style.display = "none");
-    resetSkills();
 }
 
 </script>
